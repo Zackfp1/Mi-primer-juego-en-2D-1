@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Floor
+  - Fruits
+  - Saws
+  - Box
   layers:
   - Default
   - TransparentFX

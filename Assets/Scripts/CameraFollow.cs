@@ -1,16 +1,13 @@
 using UnityEngine;
 
-public class CamaraFollo : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Transform target;
+    void LateUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (target != null)
+        {
+            transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+        }
     }
 }
