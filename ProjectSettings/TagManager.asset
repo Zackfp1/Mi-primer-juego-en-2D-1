@@ -8,6 +8,9 @@ TagManager:
   - Fruits
   - Saws
   - Box
+  - Barrel
+  - End
+  - Cup
   layers:
   - Default
   - TransparentFX

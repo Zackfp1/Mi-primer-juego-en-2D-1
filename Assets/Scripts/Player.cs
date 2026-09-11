@@ -19,11 +19,14 @@ public class Player : MonoBehaviour
 
     private int FruitsApple;
     public TMP_Text texApple;
+    private int Cup;
+    public TMP_Text texCup;
 
     public AudioSource audioSource;
     public AudioClip appleClip;
     public AudioClip barrelClip;
     public AudioClip jumpClip;
+    public AudioClip CupClip;
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -64,8 +67,8 @@ public class Player : MonoBehaviour
         }
 
         if (collision.transform.CompareTag("Saws"))
-        { 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         if(collision.transform.CompareTag("Barrel"))
@@ -86,5 +89,12 @@ public class Player : MonoBehaviour
             
             Destroy(collision.gameObject, 0.5f);
         }
+        if (collision.transform.CompareTag("Cup") && Cup == 0)
+        {
+            Cup++;
+            texCup.text = Cup.ToString();
+            audioSource.PlayOneShot(CupClip);
+        }
+        
     }
 }
