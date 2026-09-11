@@ -19,7 +19,11 @@ public class Player : MonoBehaviour
 
     private int FruitsApple;
     public TMP_Text texApple;
- 
+
+    public AudioSource audioSource;
+    public AudioClip appleClip;
+    public AudioClip barrelClip;
+    public AudioClip jumpClip;
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -37,6 +41,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, JumpForce);
+            audioSource.PlayOneShot(jumpClip);
         }
 
         animator.SetFloat("Speed", Mathf.Abs(move));
@@ -55,6 +60,7 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             FruitsApple++;
             texApple.text = FruitsApple.ToString();
+            audioSource.PlayOneShot(appleClip);
         }
 
         if (collision.transform.CompareTag("Saws"))
@@ -64,6 +70,7 @@ public class Player : MonoBehaviour
 
         if(collision.transform.CompareTag("Barrel"))
         {
+            audioSource.PlayOneShot(barrelClip);
             Vector2 knockbackDir = (rb2D.position - (Vector2)collision.transform.position).normalized;
             rb2D.linearVelocity = Vector2.zero;
             rb2D.AddForce(knockbackDir * 3, ForceMode2D.Impulse);
@@ -76,6 +83,7 @@ public class Player : MonoBehaviour
             }
 
             collision.GetComponent<Animator>().enabled = true;
+            
             Destroy(collision.gameObject, 0.5f);
         }
     }
