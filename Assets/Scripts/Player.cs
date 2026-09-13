@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public float Speed = 5;
+
     private Rigidbody2D rb2D;
     private float move;
-
+    
+    [Header("SALTOS Y FISICAS")]
+    public float Speed = 5;
     public float JumpForce = 4;
     private bool isGrounded;
     public Transform groundCheck;
@@ -17,11 +19,14 @@ public class Player : MonoBehaviour
 
     private Animator animator;
 
+    [Header("RECOLECCION DE FRUTAS Y COPAS")]
     private int FruitsApple;
-    public TMP_Text texApple;
     private int Cup;
+    [Header("UI")]
+    public TMP_Text texApple;
     public TMP_Text texCup;
 
+    [Header("SONIDOS")]
     public AudioSource audioSource;
     public AudioClip appleClip;
     public AudioClip barrelClip;
