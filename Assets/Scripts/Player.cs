@@ -70,6 +70,13 @@ public class Player : MonoBehaviour
             texApple.text = FruitsApple.ToString();
             audioSource.PlayOneShot(appleClip);
         }
+        
+        if (collision.transform.CompareTag("Cup") && Cup == 0)
+        {
+            Cup++;
+            texCup.text = Cup.ToString();
+            audioSource.PlayOneShot(CupClip);
+        }
 
         if (collision.transform.CompareTag("Saws"))
         {
@@ -94,12 +101,7 @@ public class Player : MonoBehaviour
             
             Destroy(collision.gameObject, 0.5f);
         }
-        if (collision.transform.CompareTag("Cup") && Cup == 0)
-        {
-            Cup++;
-            texCup.text = Cup.ToString();
-            audioSource.PlayOneShot(CupClip);
-        }
+
         
     }
 }
